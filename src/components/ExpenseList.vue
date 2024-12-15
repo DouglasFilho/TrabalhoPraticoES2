@@ -1,6 +1,5 @@
 <template>
   <q-card class="expense-table">
-    <!-- Filtros -->
     <q-card-section class="q-pb-sm">
       <div class="expense-table__filter row">
         <q-input
@@ -26,7 +25,6 @@
       </div>
     </q-card-section>
 
-    <!-- Tabela com paginação -->
     <q-table
       :rows="paginatedExpenses"
       :columns="columns"
@@ -36,7 +34,6 @@
       hide-bottom
     />
 
-    <!-- Paginação -->
     <q-card-actions align="center">
       <q-pagination
         v-model="pagination.page"
@@ -61,7 +58,6 @@ const props = defineProps({
   },
 });
 
-// Filtros
 const search = ref("");
 const selectedCategory = ref<string | null>(null);
 
@@ -80,10 +76,9 @@ const filteredExpenses = computed(() => {
   });
 });
 
-// Configuração de paginação
 const pagination = ref({
   page: 1,
-  rowsPerPage: 3, // Máximo de linhas por página
+  rowsPerPage: 3,
 });
 
 const paginatedExpenses = computed(() => {
@@ -92,8 +87,14 @@ const paginatedExpenses = computed(() => {
   return filteredExpenses.value.slice(start, end);
 });
 
-// Colunas da tabela
-const columns = [
+const columns: {
+  name: string;
+  label: string;
+  field: string | ((row: any) => any);
+  align?: "left" | "right" | "center";
+  sortable?: boolean;
+  format?: (val: any) => string;
+}[] = [
   {
     name: "name",
     label: "Nome",

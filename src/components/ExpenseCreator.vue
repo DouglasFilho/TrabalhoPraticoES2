@@ -42,6 +42,7 @@
 import { ref, computed } from "vue";
 import type { Expense } from "@/interfaces/Expense";
 import { useExpensesStore } from "@/stores/expenses";
+import { QForm } from "quasar";
 
 const expensesStore = useExpensesStore();
 
@@ -60,7 +61,7 @@ const categoryOptions = ref<string[]>([
   "Lazer",
 ]);
 
-const form = ref(null);
+const form = ref<InstanceType<typeof QForm> | null>(null);
 
 function addNewCategory(newCategory: string) {
   if (!categoryOptions.value.includes(newCategory)) {
@@ -70,7 +71,7 @@ function addNewCategory(newCategory: string) {
 }
 
 function addExpense() {
-  if (isFormValid) {
+  if (isFormValid.value) {
     expensesStore.addExpense(newExpense.value);
     newExpense.value = {
       name: "",

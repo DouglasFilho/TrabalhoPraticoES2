@@ -8,13 +8,14 @@
 </template>
 
 <script setup lang="ts">
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, type ChartOptions } from 'chart.js'
 import { Pie } from 'vue-chartjs'
 import { useExpensesStore } from '@/stores/expenses';
 import { computed } from 'vue';
 
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 const expensesStore = useExpensesStore();
-ChartJS.register(ArcElement, Tooltip, Legend)
 
 const chartData = computed(() => {
   const categories = expensesStore.existingCategoriesWithTotals;
@@ -24,23 +25,23 @@ const chartData = computed(() => {
     datasets: [
       {
         backgroundColor: generateColorArray(categories.length),
-        data: categories.map((el) => el.total)
-      }
-    ]
+        data: categories.map((el) => el.total),
+      },
+    ],
   };
 });
 
-const options = {
+const options: ChartOptions<'pie'> = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: {
       position: 'right',
-      align: 'center'
-    }
-  }
-}
+    },
+  },
+};
 
+// Função para gerar cores baseadas em tons de azul
 function generateColorArray(length: number): string[] {
   const blueShades = [
     "#1E3A8A", // Azul escuro sóbrio
@@ -52,7 +53,6 @@ function generateColorArray(length: number): string[] {
 
   const colors: string[] = [];
   for (let i = 0; i < length; i++) {
-    // Seleciona uma cor aleatória da paleta
     const randomColor = blueShades[Math.floor(Math.random() * blueShades.length)];
     colors.push(randomColor);
   }
