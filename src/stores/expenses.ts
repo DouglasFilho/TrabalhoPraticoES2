@@ -41,7 +41,7 @@ export const useExpensesStore = defineStore('expenses', {
   actions: {
     addExpense(expense: Omit<Expense, 'id'>) {
       const id = uuidv4();
-      this.expenses.push({ ...expense, id, color });
+      this.expenses.push({ ...expense, id });
     },
 
     updateExpense(id: string, updatedExpense: Partial<Omit<Expense, 'id'>>) {
