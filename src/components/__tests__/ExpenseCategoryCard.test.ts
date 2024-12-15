@@ -11,18 +11,14 @@ describe('ExpenseCategoryCard.vue', () => {
     totalExpenses: 5000,
   };
 
-  beforeEach(() => {
-    globalThis.$q = {
-      dark: { isActive: false },
-    };
-  });
-
   const mountWithQuasar = (props: any) => {
     return mount(ExpenseCategoryCard, {
       global: {
         plugins: [Quasar],
-        mocks: {
-          $q: globalThis.$q,
+        provide: {
+          $q: {
+            dark: { isActive: false },
+          },
         },
       },
       props,
