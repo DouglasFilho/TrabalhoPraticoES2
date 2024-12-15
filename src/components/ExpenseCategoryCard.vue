@@ -21,20 +21,10 @@
         </q-tooltip>
       </div>
 
-      <div v-if="percentageOfTotal" class="row items-center text-caption text-grey q-mt-sm">
+      <div v-if="percentageOfTotal" class="row items-center text-caption q-mt-sm">
         <q-icon name="percent" size="18px" class="q-mr-sm" />
         Porcentagem do total: <strong>{{ percentageOfTotal.toFixed(2) }}%</strong>
       </div>
-
-      <q-btn
-        flat
-        dense
-        class="q-mt-md"
-        label="Ver despesas"
-        icon="visibility"
-        color="primary"
-        @click="viewCategoryExpenses"
-      />
     </q-card-section>
   </q-card>
 </template>
@@ -88,11 +78,6 @@ function generateBlueGradient() {
   } while (color1 === color2);
 
   return `linear-gradient(135deg, ${color1}, ${color2})`;
-}
-
-
-function viewCategoryExpenses() {
-  console.log(`Visualizando despesas da categoria: ${props.categoryName}`);
 }
 </script>
 

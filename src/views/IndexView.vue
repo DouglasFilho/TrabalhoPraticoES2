@@ -30,6 +30,7 @@
                 :category-name="category.category"
                 :expense-count="category.count"
                 :total-amount="category.total"
+                :total-expenses="expensesStore.totalExpenses"
               />
             </div>
           </div>
