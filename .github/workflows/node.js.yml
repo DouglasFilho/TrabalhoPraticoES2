@@ -32,6 +32,11 @@ jobs:
     - name: Install Cypress
       run: npm install cypress --save-dev
 
+    - name: Start development server
+      run: npm start &
+    - name: Wait for server to be ready
+      run: npx wait-on http://localhost:3000
+      
     - name: Run Cypress tests
       env:
         CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
