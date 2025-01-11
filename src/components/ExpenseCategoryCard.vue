@@ -7,7 +7,9 @@
 
       <div class="row items-center text-subtitle1 q-mt-md">
         <q-icon name="attach_money" size="20px" class="q-mr-sm" />
-        Total: <strong>R$ {{ totalAmount.toFixed(2) }}</strong>
+        <span data-cy="expense-card-total">
+          Total: <strong>R$ {{ totalAmount.toFixed(2) }}</strong>
+        </span>
         <q-tooltip>
           Valor total gasto na categoria "{{ categoryName }}"
         </q-tooltip>
@@ -23,7 +25,9 @@
 
       <div v-if="percentageOfTotal" class="row items-center text-caption q-mt-sm">
         <q-icon name="percent" size="18px" class="q-mr-sm" />
-        Porcentagem do total: <strong>{{ percentageOfTotal.toFixed(2) }}%</strong>
+        <span data-cy="expense-card-percentage">
+          Porcentagem do total: <strong>{{ percentageOfTotal.toFixed(2) }}%</strong>
+        </span>
       </div>
     </q-card-section>
   </q-card>

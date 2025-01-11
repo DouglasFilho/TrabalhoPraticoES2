@@ -10,6 +10,7 @@
           debounce="300"
           class="q-mr-sm col-4"
           dense
+          data-cy="expense-list-name-filter"
         />
         <q-select
           filled
@@ -21,6 +22,7 @@
           clearable
           class="col-4"
           dense
+          data-cy="expense-list-category-filter"
         />
       </div>
     </q-card-section>

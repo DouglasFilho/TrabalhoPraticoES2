@@ -8,6 +8,7 @@
         type="text"
         :rules="[val => !!val || 'O nome é obrigatório', val => val.length <= 50 || 'Máximo de 50 caracteres']"
         lazy-rules
+        data-cy="expense-name-input"
         data-testid="input-name"
       />
       <q-input
@@ -17,6 +18,7 @@
         type="number"
         :rules="[val => val > 0 || 'O valor deve ser maior que 0', val => val <= maxAmount || `Máximo permitido é R$ ${maxAmount}`]"
         lazy-rules
+        data-cy="expense-amount-input"
         data-testid="input-amount"
       />
       <q-select
@@ -29,6 +31,7 @@
         :rules="[val => !!val || 'A categoria é obrigatória']"
         @new-value="addNewCategory"
         lazy-rules
+        data-cy="expense-category-select"
         data-testid="input-category"
       />
       <q-btn
@@ -36,6 +39,7 @@
         type="submit"
         color="primary"
         :disable="!isFormValid"
+        data-cy="add-expense-button"
         data-testid="submit-btn"
       />
     </q-form>

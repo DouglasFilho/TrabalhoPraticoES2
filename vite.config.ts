@@ -16,6 +16,9 @@ export default defineConfig({
       sassVariables: '@/quasar-variables.sass', // Arquivo de variáveis do Quasar para customização
     }),
   ],
+  server: {
+    port: 3000, // Porta fixa
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
